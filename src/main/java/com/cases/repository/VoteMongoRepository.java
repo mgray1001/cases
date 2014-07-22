@@ -8,13 +8,14 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 /**
  * Created by mario on 7/20/14.
  */
-@RepositoryRestResource(collectionResourceRel = "user", path="user")
-public interface VoteMongoRepository extends MongoRepository<CaseVote, Long> {
+//@RepositoryRestResource(collectionResourceRel = "user", path="user")
+public interface VoteMongoRepository              {
+        //extends MongoRepository<CaseVote, Long> {
 
 
-
-    void    forfeit(@Param("caseId")String caseId, @Param("userId")Long userId);
-
-    void    dismiss(@Param("caseId")String caseId, @Param("userId")Long pId);
+//
+//    void    forfeit(@Param("caseId")String caseId, @Param("userId")Long userId);
+//
+//    void    dismiss(@Param("caseId")String caseId, @Param("userId")Long pId);
 
 }

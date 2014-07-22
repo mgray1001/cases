@@ -5,6 +5,7 @@ package com.cases.repository;
  */
 public interface VoteRepository {
 
+
     void    castVote(String caseId, String pId, String value );
 
     void    forfeit(String caseId, String pId);
