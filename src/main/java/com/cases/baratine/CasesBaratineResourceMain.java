@@ -12,7 +12,7 @@ import io.baratine.db.DatabaseService;
  */
 public class CasesBaratineResourceMain {
               static  void log(String msg) {System.out.println(msg); }
-    public static void main(String[] args) {
+    private static void main(String[] args) {
 
         ServiceManager localSM = testEmbedded();
         DatabaseService _db =
