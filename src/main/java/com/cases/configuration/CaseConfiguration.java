@@ -1,13 +1,13 @@
 package com.cases.configuration;
 
-import com.cases.CasesStart;
 import com.cases.model.Case;
+import com.cases.repository.impl.mongo.UserProfileMongoRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
@@ -21,9 +21,9 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguratio
 //@PropertySource("classpath:/redis.properties")
 //@Profile("default")
 @Configuration
-@EnableMongoRepositories( basePackageClasses = { com.cases.repository.UserProfileMongoRepository.class } )
+@EnableMongoRepositories( basePackageClasses = { UserProfileMongoRepository.class } )
 @Import(RepositoryRestMvcConfiguration.class)
-@EnableAutoConfiguration
+@EnableAutoConfiguration( exclude = HibernateJpaAutoConfiguration.class )
 public class CaseConfiguration {
     public static void main(String[] args) {
         SpringApplication.run(CaseConfiguration.class, args);

@@ -1,20 +1,27 @@
 package com.cases.model;
 
+import io.baratine.core.ServiceRef;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.io.Serializable;
 
 
 /**
  * Created by mario.gray on 6/30/14.
  */
 //@Entity
-public class UserProfile {
+@Document  (collection = "user" )
+public class UserProfile implements Serializable{
 
 
     //@GeneratedValue(strategy = GenerationType.AUTO)
 
     @Id
-    Long    userId;
+    ObjectId    userId;
+
 
     @Indexed(unique = true)
     String  fbId;
@@ -33,13 +40,18 @@ public class UserProfile {
     String  email;
     String  password;
 
+    public UserProfile(String e, String fn, String ln) {
+        this.email = e;
+        this.firstName = fn;
+        this.lastName = ln;
+    }
     public UserProfile() {}
 
-    public Long getUserId() {
+    public ObjectId getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(ObjectId userId) {
         this.userId = userId;
     }
 
@@ -97,5 +109,22 @@ public class UserProfile {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserProfile that = (UserProfile) o;
+
+        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return userId != null ? userId.hashCode() : 0;
     }
 }

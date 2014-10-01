@@ -11,7 +11,7 @@ import java.util.List;
  * Created by mario on 7/14/14.
  */
 @RepositoryRestResource(collectionResourceRel = "user", path="user")
-public interface UserProfileMongoRepository extends MongoRepository<UserProfile, Long> {
+public interface UserProfileMongoRepository extends MongoRepository<UserProfile, String> {
 
     UserProfile findByUserId(@Param("userId") Long id);
     UserProfile findByEmail(@Param("email") String email);

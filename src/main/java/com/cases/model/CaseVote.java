@@ -1,6 +1,11 @@
 package com.cases.model;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
+import org.springframework.data.mongodb.core.index.CompoundIndexes;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,28 +16,31 @@ import java.io.Serializable;
 /**
  * Created by mario.gray on 6/30/14.
  */
-//@Entity
+@Document  ( collection = "vote" )
+
+@CompoundIndexes({
+        @CompoundIndex(name = "vote_ident_idx", def="{'participantUser.id':1,'participantCase.caseId':1}")
+})
+
 public class CaseVote implements Serializable {
 
     @Id
-   // @GeneratedValue(strategy = GenerationType.AUTO)
-    Long            voteId;
-
-    @Indexed(unique = true)
+    ObjectId voteId;
+    @DBRef
     ParticipantUser participantUser;
-    @Indexed(unique = true)
+    @DBRef
     Case            participantCase;
+    @Indexed
     String          value;
 
-    // String       chatConversationId;
     public CaseVote () {}
 
 
-    public Long getVoteId() {
+    public ObjectId getVoteId() {
         return voteId;
     }
 
-    public void setVoteId(Long voteId) {
+    public void setVoteId(ObjectId voteId) {
         this.voteId = voteId;
     }
 

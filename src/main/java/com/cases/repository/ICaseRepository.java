@@ -1,6 +1,11 @@
 package com.cases.repository;
 
 import com.cases.model.Case;
+import com.cases.model.ChatLine;
+import org.bson.types.ObjectId;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.NoRepositoryBean;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -8,16 +13,14 @@ import java.util.List;
  * Created by mario.gray on 6/30/14.
  */
 
+@NoRepositoryBean
 public interface ICaseRepository {
 
-    List<Case> getCasesByParticipantId(String pid, int start, int end);
+    public void chatToCase(String partUserId, String text);
 
-    List<Case> getMyCases(String pid, int start, int end);
+    public List<ChatLine> findChatsByCase(String caseId);
 
-    List<Case> getAllOpenCases(int start, int end);
-
-
-    boolean putCase(Case c);
+    //List<Case> getAllOpenCases(int start, int end);
 
 //    boolean    visitCase(String pid, String caseId);
 

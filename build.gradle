@@ -11,6 +11,13 @@ buildscript {
     }
 }
 
+//CASES-WORLD   / worldofcases
+//APP ID : 350550325094777
+//APP SECRET : 3c75c46f1548d6ed7bd88862bf233983
+
+//CASES-WORLD - TEST1
+//APP ID : 350552548427888
+//APP SECRET : 80b4c7731d2aa50f8aec69ab2bd4cb3f
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
@@ -34,6 +41,9 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
     }
+    compile files('libs/baratine-api.jar')
+    compile files('libs/baratine.jar')
+
     compile("org.springframework.boot:spring-boot-starter-data-rest")
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
     compile("redis.clients:jedis:2.4.2")
@@ -45,6 +55,7 @@ dependencies {
     // tag::actuator[]
     compile("org.springframework.boot:spring-boot-starter-actuator")
     // end::actuator[]
+    compile 'org.springframework.social:spring-social-facebook:1.1.0.RELEASE'
     testCompile("junit:junit")
 }
 

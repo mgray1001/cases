@@ -15,7 +15,7 @@ import java.util.Set;
  * Created by mario on 8/13/14.
  * TODO: how would one implement a collection of these items
  */
-@ResourceService("public:///case/{caseId}")
+//@ResourceService("public:///case/{caseId}")
 public class CaseRepositoryImpl implements IVoteRepository {
 
     String caseId;

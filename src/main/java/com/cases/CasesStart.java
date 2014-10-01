@@ -32,14 +32,6 @@ public class CasesStart {
     }
 
 
-    static void testMain(ApplicationContext ctx) {
-        //ApplicationContext ctx = SpringApplication.run(CasesStart.class);
-        RedisTemplate<String, Case> redisTemplate = (RedisTemplate<String, Case>)ctx.getBean("redisTemplate");
-        ICaseRepository caseRepo = (ICaseRepository)ctx.getBean(ICaseRepository.class);
-        caseRepo.putCase(getNewCase());
-
-    }
-
    static Case getNewCase() {
         Case c = new Case();
         c.setCaseId("1000");
