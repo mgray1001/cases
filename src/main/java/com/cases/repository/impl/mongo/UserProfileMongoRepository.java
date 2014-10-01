@@ -1,4 +1,4 @@
-package com.cases.repository;
+package com.cases.repository.impl.mongo;
 
 import com.cases.model.UserProfile;
 import org.springframework.data.mongodb.repository.MongoRepository;

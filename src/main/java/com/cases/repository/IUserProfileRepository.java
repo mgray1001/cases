@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by mario.gray on 6/30/14.
  */
-public interface UserProfileRepository {
+public interface IUserProfileRepository {
 
     UserProfile loginUser(String token, String password );
 

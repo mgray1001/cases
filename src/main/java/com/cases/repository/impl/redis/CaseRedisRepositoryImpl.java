@@ -1,4 +1,4 @@
-package com.cases.repository.impl;
+package com.cases.repository.impl.redis;
 
 import com.cases.model.Case;
 import com.cases.repository.ICaseRepository;

@@ -1,4 +1,4 @@
-package com.cases.repository;
+package com.cases.repository.impl.mongo;
 
 import com.cases.model.Case;
 import com.cases.model.UserProfile;
