@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -17,18 +18,17 @@ import java.util.List;
 /**
  * Created by mario on 9/16/14.
  */
-@Repository
-public class ICaseRepositoryImpl implements ICaseRepository {
+public class CaseMongoRepositoryImpl implements ICaseRepository {
     @Autowired
     MongoTemplate mongoTemplate;
 
-    public void chatToCase(String partUserId, String text) {
+    public void chatToCase(@Param("particId") String partUserId, @Param("text") String text) {
         ParticipantUser p = mongoTemplate.findById(partUserId, ParticipantUser.class);
         mongoTemplate.save(new ChatLine(p, text));
     }
 
 
-    public List<ChatLine> findChatsByCase(String caseId) {
+    public List<ChatLine> findChatsByCase(@Param("caseId") String caseId) {
         Query query  = new Query(Criteria.where("user.participantCase.caseId").is(caseId));
 
 

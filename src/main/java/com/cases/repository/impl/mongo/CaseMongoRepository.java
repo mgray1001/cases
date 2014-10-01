@@ -15,7 +15,7 @@ import java.util.List;
  * Created by mario on 7/22/14.
  */
 @RepositoryRestResource(collectionResourceRel = "cases", path = "cases")
-public interface CaseMongoRepository extends MongoRepository<Case, String> {
+public interface CaseMongoRepository extends MongoRepository<Case, String>, ICaseRepository {
 
     @Query("{ 'plantiff.userProfile.userId' : ?0 }")
     List<Case> findByPlantiff(@Param("userId") Long userId);

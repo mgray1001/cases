@@ -21,7 +21,6 @@ import java.io.Serializable;
 @CompoundIndexes({
         @CompoundIndex(name = "vote_ident_idx", def="{'participantUser.id':1,'participantCase.caseId':1}")
 })
-
 public class CaseVote implements Serializable {
 
     @Id

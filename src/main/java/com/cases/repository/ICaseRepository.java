@@ -13,7 +13,6 @@ import java.util.List;
  * Created by mario.gray on 6/30/14.
  */
 
-@NoRepositoryBean
 public interface ICaseRepository {
 
     public void chatToCase(String partUserId, String text);

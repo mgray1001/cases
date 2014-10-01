@@ -10,13 +10,13 @@ import org.springframework.data.repository.query.Param;
 public interface IVoteRepository {
 
 
-    CaseVote findByUser(@Param("userId")String userId);
-        //
-    void    forfeit(@Param("caseId")String caseId, @Param("userId")Long userId);
+    CaseVote findByUser(String userId);
     //
-    void    dismiss(@Param("caseId")String caseId, @Param("userId")Long pId);
+    void    forfeit(String caseId, Long participantId);
+    //
+    void    dismiss(String caseId, Long participantId);
 
-    void    castVote(String caseId, String pId, String value );
+    void    castVote(String caseId, String participantId, String value );
 
 
 }

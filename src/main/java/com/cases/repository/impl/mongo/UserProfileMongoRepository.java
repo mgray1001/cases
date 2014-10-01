@@ -13,8 +13,10 @@ import java.util.List;
 @RepositoryRestResource(collectionResourceRel = "user", path="user")
 public interface UserProfileMongoRepository extends MongoRepository<UserProfile, String> {
 
-    UserProfile findByUserId(@Param("userId") Long id);
+
+    UserProfile findByUserId(@Param("userId") String id);
     UserProfile findByEmail(@Param("email") String email);
     UserProfile findByFbToken(@Param("fbToken") String fbToken);
     UserProfile findByTwitterToken(@Param("twitterToken") String twoken);
+
 }
