@@ -30,9 +30,9 @@ jar {
 
 repositories {
     mavenLocal()
-    mavenCentral()
     maven { url "http://repo.spring.io/libs-release" }
-
+    maven { url 'http://maven.springframework.org/snapshot' }
+    mavenCentral()
 }
 
 dependencies {
@@ -55,7 +55,7 @@ dependencies {
     // tag::actuator[]
     compile("org.springframework.boot:spring-boot-starter-actuator")
     // end::actuator[]
-    compile 'org.springframework.social:spring-social-facebook:1.1.0.RELEASE'
+   // compile 'org.springframework.social:spring-social-facebook:1.1.0.RELEASE'
     testCompile("junit:junit")
 }
 
