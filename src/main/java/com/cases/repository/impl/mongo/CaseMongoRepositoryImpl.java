@@ -22,7 +22,7 @@ public class CaseMongoRepositoryImpl implements ICaseRepository {
     @Autowired
     MongoTemplate mongoTemplate;
 
-    public void chatToCase(@Param("particId") String partUserId, @Param("text") String text) {
+    public void chatToCase(@Param("partId") String partUserId, @Param("text") String text) {
         ParticipantUser p = mongoTemplate.findById(partUserId, ParticipantUser.class);
         mongoTemplate.save(new ChatLine(p, text));
     }

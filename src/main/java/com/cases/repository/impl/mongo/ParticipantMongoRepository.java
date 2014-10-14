@@ -3,6 +3,7 @@ package com.cases.repository.impl.mongo;
 import com.cases.model.CaseVote;
 import com.cases.model.ParticipantUser;
 import com.cases.repository.ParticipantRepository;
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,8 +14,8 @@ import java.util.List;
 /**
  * Created by mario on 10/1/14.
  */
-@RepositoryRestResource(collectionResourceRel = "participant", path = "participant")
-public interface ParticipantMongoRepository extends MongoRepository<CaseVote, Long>, ParticipantRepository {
+@RepositoryRestResource(itemResourceRel = "participant", collectionResourceRel = "participants", path = "participant")
+public interface ParticipantMongoRepository extends MongoRepository<ParticipantUser, String>, ParticipantRepository {
 
 
     @Query("{ 'participantCase.caseId' : '?0' }")

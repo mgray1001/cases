@@ -24,7 +24,7 @@ import java.io.Serializable;
 public class CaseVote implements Serializable {
 
     @Id
-    ObjectId voteId;
+    String voteId;
     @DBRef
     ParticipantUser participantUser;
     @DBRef
@@ -35,11 +35,11 @@ public class CaseVote implements Serializable {
     public CaseVote () {}
 
 
-    public ObjectId getVoteId() {
+    public String getVoteId() {
         return voteId;
     }
 
-    public void setVoteId(ObjectId voteId) {
+    public void setVoteId(String voteId) {
         this.voteId = voteId;
     }
 

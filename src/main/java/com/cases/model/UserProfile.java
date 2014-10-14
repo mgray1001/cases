@@ -20,7 +20,7 @@ public class UserProfile implements Serializable{
     //@GeneratedValue(strategy = GenerationType.AUTO)
 
     @Id
-    ObjectId    userId;
+    String    userId;
 
 
     @Indexed(unique = true)
@@ -47,11 +47,11 @@ public class UserProfile implements Serializable{
     }
     public UserProfile() {}
 
-    public ObjectId getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(ObjectId userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

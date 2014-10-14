@@ -18,7 +18,7 @@ public class ParticipantUser implements Serializable{
 
 
     @Id
-    ObjectId    id;
+    String    id;
     @DBRef
     UserProfile userProfile;
     @DBRef
@@ -37,11 +37,11 @@ public class ParticipantUser implements Serializable{
 
     }
 
-    public ObjectId getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
     }
 

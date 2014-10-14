@@ -10,9 +10,8 @@ import java.util.List;
 /**
  * Created by mario on 7/14/14.
  */
-@RepositoryRestResource(collectionResourceRel = "user", path="user")
+@RepositoryRestResource(itemResourceRel = "user", collectionResourceRel = "users", path="user")
 public interface UserProfileMongoRepository extends MongoRepository<UserProfile, String> {
-
 
     UserProfile findByUserId(@Param("userId") String id);
     UserProfile findByEmail(@Param("email") String email);
