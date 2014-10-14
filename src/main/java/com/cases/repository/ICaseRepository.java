@@ -1,11 +1,7 @@
 package com.cases.repository;
 
-import com.cases.model.Case;
 import com.cases.model.ChatLine;
-import org.bson.types.ObjectId;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.NoRepositoryBean;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -19,7 +15,7 @@ public interface ICaseRepository {
 
     public List<ChatLine> findChatsByCase(String caseId);
 
-    //List<Case> getAllOpenCases(int start, int end);
+    //List<Forum> getAllOpenCases(int start, int end);
 
 //    boolean    visitCase(String pid, String caseId);
 

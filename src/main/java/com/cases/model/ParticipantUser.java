@@ -1,13 +1,10 @@
 package com.cases.model;
 
-import com.cases.CaseOneController;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Entity;
 import java.io.Serializable;
 
 /**
@@ -22,7 +19,7 @@ public class ParticipantUser implements Serializable{
     @DBRef
     UserProfile userProfile;
     @DBRef
-    Case        participantCase;
+    Forum participantCase;
 
     String      jabberId;
     @Indexed
@@ -30,7 +27,7 @@ public class ParticipantUser implements Serializable{
 
     public ParticipantUser ()  {} ;
 
-    public ParticipantUser(UserProfile prof, Case pCase, Role role) {
+    public ParticipantUser(UserProfile prof, Forum pCase, Role role) {
         this.userProfile = prof;
         this.participantCase = pCase;
         this.role = role;
@@ -53,11 +50,11 @@ public class ParticipantUser implements Serializable{
         this.userProfile = userProfile;
     }
 
-    public Case getParticipantCase() {
+    public Forum getParticipantCase() {
         return participantCase;
     }
 
-    public void setParticipantCase(Case participantCase) {
+    public void setParticipantCase(Forum participantCase) {
         this.participantCase = participantCase;
     }
 

@@ -1,10 +1,10 @@
 package com.cases.controller;
 
-import com.cases.model.Case;
-import com.cases.repository.ICaseRepository;
+import com.cases.model.ChatLine;
 import com.cases.repository.impl.mongo.CaseMongoRepository;
 import com.cases.repository.impl.mongo.UserProfileMongoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,8 +26,22 @@ public class CaseController {
     @Autowired
     UserProfileMongoRepository  userProfileRepo;
 
+
+    @RequestMapping(value= "/forum/chatToCase", method=RequestMethod.POST)
+    public @ResponseBody
+    String chatToCase(@RequestParam("partId") String partId, @RequestParam("text") String text) {
+          caseRepository.chatToCase( partId, text);
+          return "OK";
+    }
+
+    @RequestMapping(value= "/forum/findByCase", method=RequestMethod.GET)
+    public @ResponseBody
+    List<ChatLine> findChatsByCase(@RequestParam("caseId") String caseId) {
+        return caseRepository.findChatsByCase( caseId);
+    }
+
     @RequestMapping(value = "/upload", method=RequestMethod.GET)
-    public @ResponseBody    String  provideUPloadInfo() {
+    public @ResponseBody    String  provideUploadInfo() {
         return "Post Images and other multimedia here";
     }
 

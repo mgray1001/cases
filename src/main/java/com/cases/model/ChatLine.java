@@ -18,7 +18,7 @@ public class ChatLine implements Serializable {
 
     @Indexed
     @DBRef
-    Case            relCase;
+    Forum relCase;
 
     String          value;
 
@@ -35,11 +35,11 @@ public class ChatLine implements Serializable {
         this.user = user;
     }
 
-    public Case getRelCase() {
+    public Forum getRelCase() {
         return relCase;
     }
 
-    public void setRelCase(Case relCase) {
+    public void setRelCase(Forum relCase) {
         this.relCase = relCase;
     }
 

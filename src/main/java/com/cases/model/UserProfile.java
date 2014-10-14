@@ -1,7 +1,6 @@
 package com.cases.model;
 
-import io.baratine.core.ServiceRef;
-import org.bson.types.ObjectId;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -25,12 +24,12 @@ public class UserProfile implements Serializable{
 
     @Indexed(unique = true)
     String  fbId;
-    @Indexed(unique = true)
+    @Indexed(unique = false)
     String  twitterId;
 
-    @Indexed(unique = true)
+    @Indexed(unique = false)
     String  fbToken;
-    @Indexed(unique = true)
+    @Indexed(unique = false)
     String  twitterToken;
 
     String  firstName;
@@ -109,6 +108,23 @@ public class UserProfile implements Serializable{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+
+    public String getFbToken() {
+        return fbToken;
+    }
+
+    public void setFbToken(String fbToken) {
+        this.fbToken = fbToken;
+    }
+
+    public String getTwitterToken() {
+        return twitterToken;
+    }
+
+    public void setTwitterToken(String twitterToken) {
+        this.twitterToken = twitterToken;
     }
 
     @Override

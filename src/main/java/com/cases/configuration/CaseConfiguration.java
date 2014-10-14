@@ -1,6 +1,7 @@
 package com.cases.configuration;
 
-import com.cases.model.Case;
+import com.cases.model.Forum;
+import com.cases.repository.impl.mongo.CaseMongoRepository;
 import com.cases.repository.impl.mongo.UserProfileMongoRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -25,7 +26,7 @@ import javax.servlet.MultipartConfigElement;
 //@PropertySource("classpath:/redis.properties")
 //@Profile("default")
 @Configuration
-@EnableMongoRepositories( basePackageClasses = { UserProfileMongoRepository.class } )
+@EnableMongoRepositories( basePackageClasses = { CaseMongoRepository.class } )
 @Import(RepositoryRestMvcConfiguration.class)
 @EnableAutoConfiguration( exclude = HibernateJpaAutoConfiguration.class )
 @ComponentScan( basePackages = {"com.cases.controller"})
@@ -43,8 +44,8 @@ public class CaseConfiguration {
     }
 
     @Bean(name="redisTemplate")
-    public RedisTemplate<String, Case> redisTemplate(RedisConnectionFactory connectionFactory) {
-                RedisTemplate<String, Case> redisTemplate = new RedisTemplate<String,Case>();
+    public RedisTemplate<String, Forum> redisTemplate(RedisConnectionFactory connectionFactory) {
+                RedisTemplate<String, Forum> redisTemplate = new RedisTemplate<String,Forum>();
         redisTemplate.setConnectionFactory( connectionFactory);
         return redisTemplate;
 

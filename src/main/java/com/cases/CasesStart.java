@@ -2,14 +2,9 @@ package com.cases;
 
 import java.util.Date;
 
-import com.cases.model.Case;
-import com.cases.repository.ICaseRepository;
+import com.cases.model.Forum;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.core.RedisTemplate;
 
 //@Configuration
 //@EnableAutoConfiguration
@@ -32,8 +27,8 @@ public class CasesStart {
     }
 
 
-   static Case getNewCase() {
-        Case c = new Case();
+   static Forum getNewCase() {
+        Forum c = new Forum();
         c.setCaseId("1000");
         c.setJid("abcdef1234");
         c.setStart(new Date());

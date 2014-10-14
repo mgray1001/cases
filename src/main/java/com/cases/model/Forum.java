@@ -1,14 +1,10 @@
 package com.cases.model;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -17,7 +13,7 @@ import java.util.Date;
  */
 //@Entity
 @Document( collection = "cases" )
-public class Case implements Serializable{
+public class Forum implements Serializable{
 
 
     @Id
@@ -38,9 +34,9 @@ public class Case implements Serializable{
 
     long    maxDurationMS;
 
-    public Case() {}
+    public Forum() {}
 
-    public Case(String desc, UserProfile p, UserProfile d) {
+    public Forum(String desc, UserProfile p, UserProfile d) {
         this.description = desc;
         this.plantiff = p;
         this.defendant = d;

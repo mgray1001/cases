@@ -1,11 +1,9 @@
 package com.cases.repository.impl.redis;
 
-import com.cases.model.Case;
-import com.cases.repository.ICaseRepository;
+import com.cases.model.Forum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -20,24 +18,24 @@ public class CaseRedisRepositoryImpl  {
     static final String OPEN_CASE = "OPEN";
 
     @Autowired
-    RedisTemplate<String, Case> caseRedisTemplate;
+    RedisTemplate<String, Forum> caseRedisTemplate;
 
     @Resource(name="redisTemplate")
-    ListOperations<String, Case> listOps;
+    ListOperations<String, Forum> listOps;
 
-    public List<Case> getCasesByParticipantId(String pid, int start, int end) {
+    public List<Forum> getCasesByParticipantId(String pid, int start, int end) {
        return caseRedisTemplate.opsForList().range(VISIT_PART+pid, start, end);
     }
 
-    public List<Case> getMyCases(String pid, int start, int end) {
+    public List<Forum> getMyCases(String pid, int start, int end) {
         return caseRedisTemplate.opsForList().range(ACTIVE_PART+pid, start, end);
     }
 
-    public List<Case> getAllOpenCases(int start, int end) {
+    public List<Forum> getAllOpenCases(int start, int end) {
         return caseRedisTemplate.opsForList().range(OPEN_CASE, start, end);
     }
 
-    public boolean putCase(Case c) {
+    public boolean putCase(Forum c) {
         Long i = listOps.leftPush(OPEN_CASE, c);
                  return i!=null && i>0;
     }

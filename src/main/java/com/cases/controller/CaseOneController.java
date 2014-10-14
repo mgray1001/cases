@@ -1,12 +1,12 @@
-package com.cases;
+package com.cases.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RestController
+//@RestController
 public class CaseOneController {
 
-    @RequestMapping("/")
+    //@RequestMapping("/")
     public String index() {
         return "Cases Controller";
     }

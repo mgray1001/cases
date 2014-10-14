@@ -1,16 +1,12 @@
 package com.cases.model;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.index.CompoundIndexes;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
 import java.io.Serializable;
 
 /**
@@ -28,7 +24,7 @@ public class CaseVote implements Serializable {
     @DBRef
     ParticipantUser participantUser;
     @DBRef
-    Case            participantCase;
+    Forum participantCase;
     @Indexed
     String          value;
 
@@ -52,11 +48,11 @@ public class CaseVote implements Serializable {
         this.participantUser = participantUser;
     }
 
-    public Case getParticipantCase() {
+    public Forum getParticipantCase() {
         return participantCase;
     }
 
-    public void setParticipantCase(Case participantCase) {
+    public void setParticipantCase(Forum participantCase) {
         this.participantCase = participantCase;
     }
 
