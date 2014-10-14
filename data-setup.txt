@@ -1,0 +1,26 @@
+# 2 users
+curl -i -X POST -H $JSON -d '{"fbId":"456789","firstName":"Mike","lastName":"Gray","email":"mike.gray@gmail.com","password":"pass","twitterId":"1234","fbToken":"abcdefb123","twitterToken":"twoken2"}' http://localhost:8080/user
+## http://localhost:8080/user/543c96663004ce1face55500
+
+curl -i -X POST -H $JSON -d '{"fbId":"356789","firstName":"Mario","lastName":"Gray","email":"mario.gray@gmail.com","password":"pass","twitterId":"12345","fbToken":"dfdefb123","twitterToken":"twoken3"}' http://localhost:8080/user
+## http://localhost:8080/user/543c96873004ce1face55501
+
+
+# empty case
+curl -i -X POST -H $JSON -d '{"description":"Case One","jid":"123456","plantiff":{"userId":"543c96663004ce1face55500" },"defendant":{"userId":"543c96873004ce1face55501"} }' http://localhost:8080/forum
+## returns e.g. http://localhost:8080/forum/543c9bd13004a6c471c5dfd0
+
+
+# visitor user
+curl -i -X POST -H $JSON -d '{"fbId":"12346321","firstName":"Josh","lastName":"Long","email":"jlong@gmail.com","password":"pass123","twitterId":"54221","fbToken":"drspring","twitterToken":"twoken4"}' http://localhost:8080/user
+## http://localhost:8080/user/543c9cb03004a6c471c5dfd1
+
+
+# participant user for visitor
+curl -i -X POST -H $JSON -d '{"role":"VISITOR", "jabberId":"8199823", "participantCase":{"caseId":"543c9bd13004a6c471c5dfd0"}, "userProfile":{"userId":"543c9cb03004a6c471c5dfd1"} }' http://localhost:8080/participant
+##  http://localhost:8080/participant/543c9d2b3004a6c471c5dfd2
+
+curl -i -X POST -d 'partId=543c9d2b3004a6c471c5dfd2' -d 'text=Hey there I am here for testing' http://localhost:8080/forum/chatToCase
+## OK
+
+curl http://localhost:8080/forum/findByCase\?caseId\=543c9bd13004a6c471c5dfd0
