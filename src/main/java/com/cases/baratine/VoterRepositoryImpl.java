@@ -1,6 +1,6 @@
 package com.cases.baratine;
 
-import com.cases.model.UserProfile;
+import com.cases.model.mongo.UserProfile;
 import io.baratine.core.*;
 
 /**

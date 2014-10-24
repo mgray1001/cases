@@ -1,9 +1,7 @@
 package com.cases.repository.impl.mongo;
 
-import com.cases.model.CaseVote;
-import com.cases.model.ParticipantUser;
+import com.cases.model.mongo.ParticipantUser;
 import com.cases.repository.ParticipantRepository;
-import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.query.Param;

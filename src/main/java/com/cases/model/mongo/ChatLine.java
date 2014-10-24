@@ -1,10 +1,11 @@
-package com.cases.model;
+package com.cases.model.mongo;
 
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by mario on 9/16/14.
@@ -21,6 +22,8 @@ public class ChatLine implements Serializable {
     Forum relCase;
 
     String          value;
+
+    Date    timestamp;
 
     public ChatLine(ParticipantUser user, String value) {
         this.user = user;
@@ -49,6 +52,15 @@ public class ChatLine implements Serializable {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
     }
 }
 

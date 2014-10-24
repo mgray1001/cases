@@ -1,8 +1,7 @@
 package com.cases.configuration;
 
-import com.cases.model.Forum;
+import com.cases.model.mongo.Forum;
 import com.cases.repository.impl.mongo.CaseMongoRepository;
-import com.cases.repository.impl.mongo.UserProfileMongoRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
@@ -27,7 +26,7 @@ import javax.servlet.MultipartConfigElement;
 //@Profile("default")
 @Configuration
 @EnableMongoRepositories( basePackageClasses = { CaseMongoRepository.class } )
-@Import(RepositoryRestMvcConfiguration.class)
+@Import({RepositoryRestMvcConfiguration.class, AppConfiguration.class, SocialConfiguration.class})
 @EnableAutoConfiguration( exclude = HibernateJpaAutoConfiguration.class )
 @ComponentScan( basePackages = {"com.cases.controller"})
 public class CaseConfiguration {

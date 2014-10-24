@@ -1,7 +1,6 @@
 package com.cases.repository;
 
-import com.cases.model.ChatLine;
-import org.springframework.data.repository.NoRepositoryBean;
+import com.cases.model.mongo.ChatLine;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.cases.repository.impl.mongo;
 
-import com.cases.model.Forum;
+import com.cases.model.mongo.Forum;
 import com.cases.repository.ICaseRepository;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;

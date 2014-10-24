@@ -1,6 +1,6 @@
 package com.cases.repository;
 
-import com.cases.model.ParticipantUser;
+import com.cases.model.mongo.ParticipantUser;
 
 import java.util.List;
 

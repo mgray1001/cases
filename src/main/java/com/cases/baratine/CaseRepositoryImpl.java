@@ -1,8 +1,8 @@
 package com.cases.baratine;
 
-import com.cases.model.CaseVote;
-import com.cases.model.SimpleVote;
-import com.cases.model.UserProfile;
+import com.cases.model.mongo.CaseVote;
+import com.cases.model.mongo.SimpleVote;
+import com.cases.model.mongo.UserProfile;
 import com.cases.repository.IVoteRepository;
 import io.baratine.core.*;
 import org.springframework.data.repository.query.Param;

@@ -2,7 +2,7 @@ package com.cases;
 
 import java.util.Date;
 
-import com.cases.model.Forum;
+import com.cases.model.mongo.Forum;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
 

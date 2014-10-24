@@ -1,8 +1,6 @@
 package com.cases.repository;
 
-import com.cases.model.CaseVote;
-import com.cases.model.SimpleVote;
-import org.springframework.data.repository.query.Param;
+import com.cases.model.mongo.CaseVote;
 
 /**
  * Created by mario.gray on 6/30/14.

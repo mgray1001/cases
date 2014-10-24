@@ -1,4 +1,4 @@
-package com.cases.model;
+package com.cases.model.mongo;
 
 
 import org.springframework.data.annotation.Id;
@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.util.Date;
 
 
 /**
@@ -39,6 +40,7 @@ public class UserProfile implements Serializable{
     String  email;
     String  password;
 
+    Date created;
     public UserProfile(String e, String fn, String ln) {
         this.email = e;
         this.firstName = fn;
@@ -142,5 +144,13 @@ public class UserProfile implements Serializable{
     @Override
     public int hashCode() {
         return userId != null ? userId.hashCode() : 0;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
     }
 }

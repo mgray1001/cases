@@ -1,6 +1,6 @@
 package com.cases.repository.impl.redis;
 
-import com.cases.model.Forum;
+import com.cases.model.mongo.Forum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;

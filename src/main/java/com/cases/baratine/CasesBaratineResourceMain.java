@@ -1,7 +1,6 @@
 package com.cases.baratine;
 
-import com.cases.baratine.VoterRepositoryImpl;
-import com.cases.model.UserProfile;
+import com.cases.model.mongo.UserProfile;
 import com.caucho.amp.hamp.ClientHamp;
 import com.caucho.baratine.Baratine;
 import io.baratine.core.*;

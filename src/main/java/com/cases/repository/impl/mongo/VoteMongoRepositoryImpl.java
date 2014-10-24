@@ -1,6 +1,6 @@
 package com.cases.repository.impl.mongo;
 
-import com.cases.model.CaseVote;
+import com.cases.model.mongo.CaseVote;
 import com.cases.repository.IVoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;

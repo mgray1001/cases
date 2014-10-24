@@ -9,7 +9,7 @@ curl -i -X POST -H $JSON -d '{"fbId":"356789","firstName":"Mario","lastName":"Gr
 # empty case
 curl -i -X POST -H $JSON -d '{"description":"Case One","jid":"123456","plantiff":{"userId":"543c96663004ce1face55500" },"defendant":{"userId":"543c96873004ce1face55501"} }' http://localhost:8080/forum
 ## returns e.g. http://localhost:8080/forum/543c9bd13004a6c471c5dfd0
-
+	
 
 # visitor user
 curl -i -X POST -H $JSON -d '{"fbId":"12346321","firstName":"Josh","lastName":"Long","email":"jlong@gmail.com","password":"pass123","twitterId":"54221","fbToken":"drspring","twitterToken":"twoken4"}' http://localhost:8080/user
@@ -24,3 +24,20 @@ curl -i -X POST -d 'partId=543c9d2b3004a6c471c5dfd2' -d 'text=Hey there I am her
 ## OK
 
 curl http://localhost:8080/forum/findByCase\?caseId\=543c9bd13004a6c471c5dfd0
+
+
+
+{  "userId" : "543c96873004ce1face55501",  "fbId" : "356789",  "twitterId" : "12345",  "fbToken" : "dfdefb123",  "twitterToken" : "twoken3",  "firstName" : "Mario",  "lastName" : "Gray",  "smsTelephone" : null,  "email" : "mario.gray@gmail.com",  "password" : "pass",  "_links" : {    "self" : {
+      "href" : "http://localhost:8080/user/543c96873004ce1face55501"    }  }}
+"userProfile" : {
+      "userId" : "543c9cb03004a6c471c5dfd1",
+      "fbId" : "12346321",
+      "twitterId" : "54221",
+      "fbToken" : "drspring",
+      "twitterToken" : "twoken4",
+      "firstName" : "Josh",
+      "lastName" : "Long",
+      "smsTelephone" : null,
+      "email" : "jlong@gmail.com",
+      "password" : "pass123"
+    }

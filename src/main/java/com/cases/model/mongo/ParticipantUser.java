@@ -1,4 +1,4 @@
-package com.cases.model;
+package com.cases.model.mongo;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by mario.gray on 6/30/14.
@@ -25,6 +26,7 @@ public class ParticipantUser implements Serializable{
     @Indexed
     Role        role;
 
+    Date created;
     public ParticipantUser ()  {} ;
 
     public ParticipantUser(UserProfile prof, Forum pCase, Role role) {
@@ -72,5 +74,13 @@ public class ParticipantUser implements Serializable{
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
     }
 }

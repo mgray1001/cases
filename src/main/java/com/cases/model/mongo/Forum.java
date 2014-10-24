@@ -1,4 +1,4 @@
-package com.cases.model;
+package com.cases.model.mongo;
 
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -31,8 +31,14 @@ public class Forum implements Serializable{
     @Indexed
     Date    end;
 
+    String  status;
+
+    UserProfile winner;
 
     long    maxDurationMS;
+
+    Date    created;
+
 
     public Forum() {}
 
@@ -106,5 +112,29 @@ public class Forum implements Serializable{
 
     public void setEnd(Date end) {
         this.end = end;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String outcome) {
+        this.status = outcome;
+    }
+
+    public UserProfile getWinner() {
+        return winner;
+    }
+
+    public void setWinner(UserProfile winner) {
+        this.winner = winner;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
     }
 }

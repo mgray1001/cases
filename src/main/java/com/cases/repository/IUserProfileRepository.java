@@ -1,6 +1,6 @@
 package com.cases.repository;
 
-import com.cases.model.UserProfile;
+import com.cases.model.mongo.UserProfile;
 
 import java.util.List;
 

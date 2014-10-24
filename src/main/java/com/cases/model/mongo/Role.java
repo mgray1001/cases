@@ -1,4 +1,4 @@
-package com.cases.model;
+package com.cases.model.mongo;
 
 import java.io.Serializable;
 

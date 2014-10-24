@@ -1,4 +1,4 @@
-package com.cases.model;
+package com.cases.model.mongo;
 
 import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.index.CompoundIndexes;
@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import org.springframework.data.annotation.Id;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by mario.gray on 6/30/14.
@@ -27,6 +28,8 @@ public class CaseVote implements Serializable {
     Forum participantCase;
     @Indexed
     String          value;
+
+    Date timestamp;
 
     public CaseVote () {}
 
@@ -62,5 +65,13 @@ public class CaseVote implements Serializable {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
     }
 }

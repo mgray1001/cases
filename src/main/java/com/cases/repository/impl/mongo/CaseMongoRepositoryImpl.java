@@ -1,7 +1,7 @@
 package com.cases.repository.impl.mongo;
 
-import com.cases.model.ChatLine;
-import com.cases.model.ParticipantUser;
+import com.cases.model.mongo.ChatLine;
+import com.cases.model.mongo.ParticipantUser;
 import com.cases.repository.ICaseRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
