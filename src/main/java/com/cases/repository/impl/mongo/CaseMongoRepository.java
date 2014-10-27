@@ -23,10 +23,10 @@ public interface CaseMongoRepository extends MongoRepository<Forum, String>, ICa
 
     List<Forum> findByCaseId(@Param("caseId") String caseId);
 
-    @Query("{ 'end $ne \'\'' ")
+    @Query("{ 'end' :{'$ne':''} } ")
     List<Forum> findOpenCases();
 
-    @Query(" { 'description': /.*?0.*/ }")
+    //@Query(" { 'description': /?0/ }")
     List<Forum> findByDescriptionLike(@Param("description") String desc);
 
     Forum findByJid(@Param("roomId") String roomId);

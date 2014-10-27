@@ -6,10 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.context.embedded.MultipartConfigFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.*;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
@@ -22,13 +19,13 @@ import javax.servlet.MultipartConfigElement;
 /**
  * Created by mario on 7/2/14.
  */
-//@PropertySource("classpath:/redis.properties")
 //@Profile("default")
 @Configuration
 @EnableMongoRepositories( basePackageClasses = { CaseMongoRepository.class } )
 @Import({RepositoryRestMvcConfiguration.class, AppConfiguration.class, SocialConfiguration.class})
 @EnableAutoConfiguration( exclude = HibernateJpaAutoConfiguration.class )
 @ComponentScan( basePackages = {"com.cases.controller"})
+//@PropertySource("classpath:config/application.properties")
 public class CaseConfiguration {
     public static void main(String[] args) {
         SpringApplication.run(CaseConfiguration.class, args);
@@ -56,9 +53,6 @@ public class CaseConfiguration {
         factory.setMaxFileSize("1MB");
         factory.setMaxRequestSize("1MB");
         return factory.createMultipartConfig();
-
-
-
     }
 
 }

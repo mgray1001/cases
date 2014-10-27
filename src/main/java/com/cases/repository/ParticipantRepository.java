@@ -1,6 +1,7 @@
 package com.cases.repository;
 
 import com.cases.model.mongo.ParticipantUser;
+import org.bson.types.ObjectId;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  */
 public interface ParticipantRepository {
 
-    List<ParticipantUser> findByParticipantCase(String caseId);
-    ParticipantUser findByUserProfile(String userProfileId);
+    List<ParticipantUser> findByParticipantCaseCaseId(ObjectId caseId);
+    List<ParticipantUser> findByUserProfile(ObjectId userProfileId);
 
 }

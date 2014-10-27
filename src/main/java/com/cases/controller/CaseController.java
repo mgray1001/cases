@@ -1,11 +1,22 @@
 package com.cases.controller;
 
 import com.cases.model.mongo.ChatLine;
+import com.cases.model.mongo.ParticipantUser;
+import com.cases.repository.ICaseRepository;
 import com.cases.repository.impl.mongo.CaseMongoRepository;
+import com.cases.repository.impl.mongo.ParticipantMongoRepository;
 import com.cases.repository.impl.mongo.UserProfileMongoRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jdk.nashorn.internal.ir.debug.JSONWriter;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.bson.types.ObjectId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.BasicQuery;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,9 +30,16 @@ import java.util.List;
  */
 @Controller()
 public class CaseController {
+          Logger logger = LoggerFactory.getLogger(CaseController.class);
 
     @Autowired
     CaseMongoRepository caseRepository;
+
+    @Autowired
+    MongoTemplate template;
+
+    @Autowired
+    ParticipantMongoRepository  participantRepository;
 
     @Autowired
     UserProfileMongoRepository  userProfileRepo;
@@ -70,11 +88,30 @@ public class CaseController {
     }
 
 
+    @RequestMapping(value="/test", method=RequestMethod.GET)
+    public @ResponseBody String handleTest() throws Exception {
+
+        ParticipantUser p = template.findOne(new BasicQuery("{ \"participantCase.$id\" : { \"$oid\":\"543c9bd13004a6c471c5dfd0\"} }"), ParticipantUser.class);
+        if(p!=null) {
+            logger.info(p.getId());
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.writeValueAsString(p);
+        }
+        return "OK";
+    }
+
     @RequestMapping(value = "/upload", method=RequestMethod.POST)
     public @ResponseBody String handleFileUpload(@RequestParam("name") String name,
                                        @RequestParam("userId") String userId,
                                        @RequestParam("caseId") String caseId,
                                        @RequestParam("file") MultipartFile file) {
+
+        ObjectId oc = new ObjectId(caseId);
+        ObjectId ou = new ObjectId(userId);
+        ParticipantUser pUser = participantRepository.findByParticipantCaseCaseIdAndUserProfileUserId(oc, ou);
+        if(pUser==null)
+            return "This User didnt exist for the case specified.";
+
 
         if(!file.isEmpty()) {
             try {
@@ -83,12 +120,17 @@ public class CaseController {
                 String dirPath;
                 BufferedOutputStream stream;
 
-                if(caseId == null)
+                String folder ;
+                if(caseId != null)
                     // upload as user picture
-                    dirPath = basePath + DIR_SEP + userId;
+                    folder =  caseId;
                     // or it belongs to a case
                 else
-                    dirPath = basePath+ DIR_SEP + caseId;
+                    folder = userId;
+
+                dirPath = basePath+ DIR_SEP + folder;
+
+                String  imageURL = String.format("/files/%s/%s", folder, name)   ;
 
                 File dir = new File(dirPath);
                 if (!dir.exists())
@@ -98,8 +140,11 @@ public class CaseController {
                 stream.write(bytes);
                 stream.flush();
                 stream.close();
-                return "You successfully uploaded " + name ;
 
+
+                caseRepository.chatToCase(pUser.getId(), imageURL );
+                return imageURL; // "You successfully uploaded " + name ;
+                                                     // /files/typeId/filename
             } catch(Exception e) {
                 e.printStackTrace();
                 return " Upload failed ";

@@ -2,6 +2,7 @@ package com.cases.repository.impl.mongo;
 
 import com.cases.model.mongo.ParticipantUser;
 import com.cases.repository.ParticipantRepository;
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -16,10 +17,13 @@ import java.util.List;
 public interface ParticipantMongoRepository extends MongoRepository<ParticipantUser, String>, ParticipantRepository {
 
 
-    @Query("{ 'participantCase.caseId' : '?0' }")
-    List<ParticipantUser> findByParticipantCase(@Param("caseId") String caseId);
+    @Query("{ 'participantCase.$id' : ?0 }")
+    List<ParticipantUser> findByParticipantCaseCaseId(@Param("caseId") ObjectId caseId);
 
-    @Query("{ 'userProfile.userId' : '?0' }")
-    ParticipantUser findByUserProfile(@Param("userId") String userProfileId);
+    @Query("{ 'userProfile.$id' : ?0 }")
+    List<ParticipantUser> findByUserProfile(@Param("userId") ObjectId userProfileId);
+
+    @Query("{ 'participantCase.$id':  ?0  ,  'userProfile.$id' : ?1  }")
+    ParticipantUser findByParticipantCaseCaseIdAndUserProfileUserId(@Param("caseId") ObjectId caseId, @Param("userId")ObjectId userId);
 
 }
